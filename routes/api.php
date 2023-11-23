@@ -14,3 +14,5 @@ declare(strict_types=1);
 */
 
 require 'services/auth.php';
+
+require 'services/filesystem.php';
