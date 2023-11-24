@@ -27,9 +27,10 @@ class FolderController extends Controller
 
             $files = QueryBuilder::for(File::class, $request)
                 ->allowedFields(['id', 'name', 'type', 'metadata'])
-                ->allowedSorts('type')
+                ->allowedFilters(['type'])
+                ->allowedSorts('type', 'name')
                 ->where('parent_id', $rootFolder->id)
-                ->defaultSort('-type')
+                ->defaultSort('-type', 'name')
                 ->jsonPaginate(type: 'fastPaginate');
 
             return (new FileCollection($files))->for($rootFolder);
