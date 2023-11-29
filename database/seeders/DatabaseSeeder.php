@@ -45,7 +45,8 @@ class DatabaseSeeder extends Seeder
                 'metadata' => json_encode([]),
                 'type' => FileType::Folder->value,
                 'owner_id' => $owner->id,
-                'parent_id' => Arr::get($parent, 'id')
+                'parent_id' => Arr::get($parent, 'id'),
+                'created_at' => now(),
             ]);
         }
 
@@ -66,7 +67,8 @@ class DatabaseSeeder extends Seeder
                 ]),
                 'type' => FileType::File->value,
                 'owner_id' => $owner->id,
-                'parent_id' => $folder['id']
+                'parent_id' => $folder['id'],
+                'created_at' => now(),
             ]);
         }
 

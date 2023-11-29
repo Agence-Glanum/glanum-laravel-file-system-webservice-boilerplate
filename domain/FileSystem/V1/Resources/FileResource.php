@@ -15,15 +15,17 @@ class FileResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'type' => $this->type,
+            'id' => $this->whenHas('id', $this->id),
+            'name' => $this->whenHas('name', $this->name),
+            'type' => $this->whenHas('type', $this->type),
             'sync' => true,
             'root' => $this->parent_id === null,
-            'metadata' => [
+            'metadata' => $this->whenHas('metadata', [
                 ...$this->metadata,
                 'parentDirId' => $this->parent_id
-            ],
+            ]),
+            'created_at' => $this->whenHas('created_at', $this->created_at),
+            'updated_at' => $this->whenHas('updated_at', $this->updated_at)
         ];
     }
 }

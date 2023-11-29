@@ -19,7 +19,7 @@ class FolderFileController extends Controller
     {
         try {
             $files = QueryBuilder::for(File::class, $request)
-                ->allowedFields(['id', 'name', 'type', 'metadata'])
+                ->allowedFields(['id', 'name', 'type', 'metadata', 'created_at', 'updated_at'])
                 ->allowedFilters(['type'])
                 ->allowedSorts('type', 'name')
                 ->where('parent_id', $folder->id)
