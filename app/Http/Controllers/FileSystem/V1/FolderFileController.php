@@ -46,4 +46,11 @@ class FolderFileController extends Controller
 
         return new FileResource($file);
     }
+
+    public function destroy(File $folder, File $file): JsonResponse
+    {
+        $file->delete();
+
+        return response()->json();
+    }
 }

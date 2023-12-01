@@ -12,5 +12,6 @@ Route::prefix('filesystem')
             Route::get('folders/{folder}/files', [FolderFileController::class, 'index']);
             Route::get('folders/{folder}/files/{file}', [FolderFileController::class, 'show']);
             Route::put('folders/{folder}/files/{file}', [FolderFileController::class, 'update']);
+            Route::delete('folders/{folder}/files/{file}', [FolderFileController::class, 'destroy']);
         });
     });
